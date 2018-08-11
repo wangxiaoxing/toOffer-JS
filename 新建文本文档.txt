@@ -1,0 +1,44 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main(int argc, char** argv) {
+	int n,k,min,max,mina,maxa,s,m,f=-1,t=0;
+	int a[105];
+	int b[105];
+	int output[2005];
+	scanf("%d%d",&n,&k);
+	for(int i = 0; i < n; i++) scanf("%d",&a[i]);
+	for(int i = 0; i < k+1; i++){
+		min = 1005,max = -1;
+		for(int j = 0; j < n; j++){
+			if(a[j]>max){
+				max = a[j];
+				maxa = j;
+			}
+			if(a[j]<min){
+				min = a[j];
+				mina = j;
+			}
+		}
+		s = max-min;
+		if((s==f) || (s==0)){
+			m = i;
+			break;
+		}
+		else{
+			f = s;
+			a[mina] += 1;
+			a[maxa] -= 1;
+			output[t++] = maxa;
+			output[t++] = mina;
+		}	
+	}
+	printf("%d %d\n",s,m);
+	int i = 0;
+	while(i<t){
+		printf("%d %d\n",output[i]+1,output[i+1]+1);
+		i = i + 2;
+	}
+	return 0;
+}
