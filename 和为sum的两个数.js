@@ -7,7 +7,7 @@ function FindNumbersWithSum(array, sum) {
     if (temp < sum) {
       left++;
     } else if (temp > sum) {
-      right++;
+      right--;
     } else {
       return [array[left], array[right]];
      }
